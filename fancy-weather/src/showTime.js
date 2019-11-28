@@ -16,8 +16,8 @@ export default function showTime(dateObj) {
       ? (hoursElem.innerText = +hoursElem.innerText + 1)
       : null;
 
-    if (hoursElem.innerText === '25') {
+    if (hoursElem.innerText === '24') {
       hoursElem.innerText = '0';
     }
-  }, 1000);
+  }, 60000);
 }
