@@ -1,12 +1,17 @@
 import getWeather from './weather';
-import getCurrentLocation from './currentLocation';
+import getCurrentLocationObject from './currentLocation';
 import buildHTMLContent from './elements';
+import showTime from './showTime';
 
-async function getWeatherWithCurrentLocation() {
-  const coordinates = await getCurrentLocation();
-  console.log(getWeather(coordinates));
+async function initWithDefaultValues() {
+  const locationObject = await getCurrentLocationObject();
+  const { latitude, longitude } = locationObject.coords;
+  const { timestamp } = locationObject;
+  const dateObj = new Date(timestamp);
+
+  showTime(dateObj);
+  getWeather(`${latitude},${longitude}`);
 }
 
 buildHTMLContent();
-// getWeather();
-// getWeatherWithCurrentLocation();
+initWithDefaultValues();

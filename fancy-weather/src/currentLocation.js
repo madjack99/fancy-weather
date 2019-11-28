@@ -4,8 +4,7 @@ function makeCurrentLocationPromise() {
   });
 }
 
-export default async function getCurrentLocation() {
-  const { coords } = await makeCurrentLocationPromise();
-  const { latitude, longitude } = coords;
-  return `${latitude},${longitude}`;
+export default async function getCurrentLocationObject() {
+  const locationObject = await makeCurrentLocationPromise();
+  return locationObject;
 }

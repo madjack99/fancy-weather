@@ -5,7 +5,7 @@ const { openCageKey } = config;
 
 function getCoordsFromInput(input) {
   return fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${input}&key=${openCageKey}&no_annotations=1&limit=1`
+    `https://api.opencagedata.com/geocode/v1/json?q=${input}&key=${openCageKey}&limit=1`
   )
     .then(res => res.json())
     .then(data => {

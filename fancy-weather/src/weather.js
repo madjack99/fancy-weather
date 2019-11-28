@@ -7,4 +7,5 @@ export default async function getWeather(coordinates = MINSK_COORDS) {
     `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${darkSkyKey}/${coordinates}`
   );
   const data = await response.json();
+  console.log(data);
 }
