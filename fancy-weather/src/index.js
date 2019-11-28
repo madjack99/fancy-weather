@@ -9,9 +9,9 @@ async function initWithDefaultValues() {
   const { timestamp } = locationObject;
   const dateObj = new Date(timestamp);
 
+  showTime(dateObj);
   const weatherData = await getWeather(`${latitude},${longitude}`);
   console.log(weatherData, 'data');
-  showTime(dateObj);
 }
 
 buildHTMLContent();

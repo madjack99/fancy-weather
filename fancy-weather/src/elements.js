@@ -24,6 +24,15 @@ hours.classList.add('time-box__hours');
 const minutes = document.createElement('div');
 minutes.classList.add('time-box__minutes');
 
+const weatherBox = document.createElement('div');
+weatherBox.classList.add('weather-box');
+
+const temperature = document.createElement('div');
+temperature.classList.add('weather-box__temperature');
+
+const apparentTemperature = document.createElement('div');
+apparentTemperature.classList.add('weather-box__apparent-temperature');
+
 export default function buildHTMLContent() {
   form.appendChild(input);
   form.appendChild(submitBtn);
@@ -31,4 +40,6 @@ export default function buildHTMLContent() {
   timeBox.appendChild(hours);
   timeBox.appendChild(minutes);
   container.appendChild(timeBox);
+  weatherBox.append(temperature, apparentTemperature);
+  container.appendChild(weatherBox);
 }
