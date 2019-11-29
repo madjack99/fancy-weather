@@ -17,8 +17,7 @@ function getCoordsFromInput(input) {
       const { lat, lng } = geometry;
       const timeZone = annotations.timezone.name;
       const cityName = formatted;
-      console.log(data);
-      console.log(cityName);
+
       return {
         cityName,
         timeZone,

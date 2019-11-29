@@ -8,7 +8,6 @@ import { getCityNameByCoords, insertDataIntoNode } from './helper';
 
 async function initWithDefaultValues() {
   const locationObject = await getCurrentLocationObject();
-  console.log(locationObject);
   const { latitude, longitude } = locationObject.coords;
   const { timestamp } = locationObject;
   const dateObj = new Date(timestamp);
