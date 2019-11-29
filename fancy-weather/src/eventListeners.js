@@ -1,6 +1,7 @@
 import config from './config';
 import getWeather from './weather';
 import showWeather from './showWeather';
+import showTime from './showTime';
 
 const { openCageKey } = config;
 
@@ -10,10 +11,14 @@ function getCoordsFromInput(input) {
   )
     .then(res => res.json())
     .then(data => {
-      const { geometry } = data.results[0];
+      const { geometry, annotations } = data.results[0];
       const { lat, lng } = geometry;
+      const timeZone = annotations.timezone.name;
       console.log(data);
-      return `${lat},${lng}`;
+      return {
+        timeZone,
+        coordinates: `${lat},${lng}`
+      };
     });
 }
 
@@ -22,8 +27,13 @@ export const handleCitySubmit = async e => {
 
   const input = document.querySelector('.input');
   const city = input.value;
-  const coordinates = await getCoordsFromInput(city);
-
+  const { coordinates, timeZone } = await getCoordsFromInput(city);
   const weatherData = await getWeather(coordinates);
+  const selectedLocationDateString = new Date().toLocaleString('en-US', {
+    timeZone
+  });
+  const dateObj = new Date(selectedLocationDateString);
+
+  showTime(dateObj);
   showWeather(weatherData);
 };
