@@ -15,3 +15,8 @@ export function getCityNameByCoords(coords) {
         .join(', ');
     });
 }
+
+export function insertDataIntoNode(data, nodeClassName) {
+  const node = document.querySelector(nodeClassName);
+  node.innerText = data;
+}

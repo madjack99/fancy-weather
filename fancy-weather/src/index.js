@@ -3,7 +3,7 @@ import getCurrentLocationObject from './currentLocation';
 import buildHTMLContent from './elements';
 import showTime from './showTime';
 import showWeather from './showWeather';
-import { getCityNameByCoords } from './helper';
+import { getCityNameByCoords, insertDataIntoNode } from './helper';
 
 async function initWithDefaultValues() {
   const locationObject = await getCurrentLocationObject();
@@ -14,6 +14,7 @@ async function initWithDefaultValues() {
   const weatherData = await getWeather(`${latitude},${longitude}`);
   const cityName = await getCityNameByCoords(`${latitude},${longitude}`);
 
+  insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
   showWeather(weatherData);
 }
