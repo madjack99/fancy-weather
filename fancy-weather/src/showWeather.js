@@ -12,7 +12,7 @@ export default function showWeather(weatherData) {
     icon,
     summary,
     apparentTemperature,
-    wind,
+    windSpeed,
     humidity
   } = currently;
 
@@ -26,6 +26,6 @@ export default function showWeather(weatherData) {
     `FEELS LIKE: ${roundedApparentTemperature}`,
     '.weather-box__apparent-temperature'
   );
-  insertDataIntoNode(wind, '.weather-box__wind');
-  insertDataIntoNode(humidity, '.weather-box__humidity');
+  insertDataIntoNode(`wind: ${windSpeed}`, '.weather-box__wind');
+  insertDataIntoNode(`humidity: ${humidity}`, '.weather-box__humidity');
 }
