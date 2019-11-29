@@ -21,6 +21,9 @@ form.addEventListener('submit', handleCitySubmit);
 const locationName = document.createElement('div');
 locationName.classList.add('location-name');
 
+const dateBox = document.createElement('div');
+dateBox.classList.add('date-box');
+
 const timeBox = document.createElement('div');
 timeBox.classList.add('time-box');
 
@@ -43,7 +46,7 @@ export default function buildHTMLContent() {
   container.append(form, infoSection);
 
   form.append(input, submitBtn);
-  infoSection.append(locationName, timeBox, weatherBox);
+  infoSection.append(locationName, dateBox, timeBox, weatherBox);
 
   timeBox.append(hours, minutes);
   weatherBox.append(temperature, apparentTemperature);
