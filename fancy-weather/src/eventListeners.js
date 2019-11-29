@@ -2,6 +2,7 @@ import config from './config';
 import getWeather from './weather';
 import showWeather from './showWeather';
 import showTime from './showTime';
+import showDate from './showDate';
 import { insertDataIntoNode } from './helper';
 
 const { openCageKey } = config;
@@ -38,6 +39,7 @@ export const handleCitySubmit = async e => {
   });
   const dateObj = new Date(selectedLocationDateString);
 
+  showDate(dateObj);
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
   showWeather(weatherData);
