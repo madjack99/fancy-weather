@@ -1,5 +1,6 @@
 import config from './config';
 import getWeather from './weather';
+import showWeather from './showWeather';
 
 const { openCageKey } = config;
 
@@ -23,5 +24,6 @@ export const handleCitySubmit = async e => {
   const city = input.value;
   const coordinates = await getCoordsFromInput(city);
 
-  getWeather(coordinates);
+  const weatherData = await getWeather(coordinates);
+  showWeather(weatherData);
 };
