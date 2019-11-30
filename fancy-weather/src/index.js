@@ -4,6 +4,7 @@ import buildHTMLContent from './elements';
 import showTime from './showTime';
 import showWeather from './showWeather';
 import showDate from './showDate';
+import showThreeDaysWeather from './threeDaysWeather';
 import { getCityNameByCoords, insertDataIntoNode } from './helper';
 
 import './styles/main.scss';
@@ -20,6 +21,7 @@ async function initWithDefaultValues() {
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
   showWeather(weatherData);
+  showThreeDaysWeather(weatherData);
 }
 
 buildHTMLContent();

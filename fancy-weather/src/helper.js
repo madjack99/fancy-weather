@@ -34,8 +34,8 @@ export function insertDataIntoNode(data, nodeClassName) {
   node.innerText = data;
 }
 
-export function insertIcon(iconDescription) {
-  const iconElem = document.querySelector('.weather-box__icon');
+export function insertIcon(iconDescription, nodeClassName) {
+  const iconElem = document.querySelector(nodeClassName);
 
   switch (iconDescription) {
     case 'clear-day':

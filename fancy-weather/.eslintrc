@@ -21,6 +21,7 @@
     "import/prefer-default-export": "off",
     "arrow-parens": ["error", "as-needed"],
     "no-param-reassign": "off",
-    "no-unused-expressions": ["off", { "allowTernary": true }]
+    "no-unused-expressions": ["off", { "allowTernary": true }],
+    "no-use-before-define": ["error", { "functions": false }]
   }
 }

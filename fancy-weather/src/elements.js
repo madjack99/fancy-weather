@@ -69,6 +69,30 @@ dayOneTemperature.classList.add('day__temperature', 'day-one__temperature');
 const dayOneIcon = document.createElement('img');
 dayOneIcon.classList.add('day__icon', 'day-one__icon');
 
+const dayTwo = document.createElement('div');
+dayTwo.classList.add('day', 'day-two');
+
+const dayTwoName = document.createElement('div');
+dayTwoName.classList.add('day__name', 'day-two__name');
+
+const dayTwoTemperature = document.createElement('div');
+dayTwoTemperature.classList.add('day__temperature', 'day-two__temperature');
+
+const dayTwoIcon = document.createElement('img');
+dayTwoIcon.classList.add('day__icon', 'day-two__icon');
+
+const dayThree = document.createElement('div');
+dayThree.classList.add('day', 'day-three');
+
+const dayThreeName = document.createElement('div');
+dayThreeName.classList.add('day__name', 'day-three__name');
+
+const dayThreeTemperature = document.createElement('div');
+dayThreeTemperature.classList.add('day__temperature', 'day-three__temperature');
+
+const dayThreeIcon = document.createElement('img');
+dayThreeIcon.classList.add('day__icon', 'day-three__icon');
+
 export default function buildHTMLContent() {
   container.append(form, infoSection);
 
@@ -91,6 +115,8 @@ export default function buildHTMLContent() {
     humidity
   );
 
-  threeDaysWeather.append(dayOne);
+  threeDaysWeather.append(dayOne, dayTwo, dayThree);
   dayOne.append(dayOneName, dayOneTemperature, dayOneIcon);
+  dayTwo.append(dayTwoName, dayTwoTemperature, dayTwoIcon);
+  dayThree.append(dayThreeName, dayThreeTemperature, dayThreeIcon);
 }
