@@ -6,6 +6,8 @@ import showWeather from './showWeather';
 import showDate from './showDate';
 import { getCityNameByCoords, insertDataIntoNode } from './helper';
 
+import './styles/main.scss';
+
 async function initWithDefaultValues() {
   const locationObject = await getCurrentLocationObject();
   const { latitude, longitude } = locationObject.coords;
