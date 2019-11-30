@@ -54,11 +54,32 @@ wind.classList.add('weather-box__wind');
 const humidity = document.createElement('div');
 humidity.classList.add('weather-box__humidity');
 
+const threeDaysWeather = document.createElement('div');
+threeDaysWeather.classList.add('.three-days-weather');
+
+const dayOne = document.createElement('div');
+dayOne.classList.add('day', 'day-one');
+
+const dayOneName = document.createElement('div');
+dayOneName.classList.add('day__name', 'day-one__name');
+
+const dayOneTemperature = document.createElement('div');
+dayOneTemperature.classList.add('day__temperature', 'day-one__temperature');
+
+const dayOneIcon = document.createElement('img');
+dayOneIcon.classList.add('day__icon', 'day-one__icon');
+
 export default function buildHTMLContent() {
   container.append(form, infoSection);
 
   form.append(input, submitBtn);
-  infoSection.append(locationName, dateBox, timeBox, weatherBox);
+  infoSection.append(
+    locationName,
+    dateBox,
+    timeBox,
+    weatherBox,
+    threeDaysWeather
+  );
 
   timeBox.append(hours, minutes);
   weatherBox.append(
@@ -69,4 +90,7 @@ export default function buildHTMLContent() {
     wind,
     humidity
   );
+
+  threeDaysWeather.append(dayOne);
+  dayOne.append(dayOneName, dayOneTemperature, dayOneIcon);
 }
