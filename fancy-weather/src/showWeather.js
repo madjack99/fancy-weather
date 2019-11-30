@@ -1,10 +1,6 @@
-import { insertDataIntoNode } from './helper';
+import { insertDataIntoNode, insertIcon } from './helper';
 
 export default function showWeather(weatherData) {
-  // const temperatureElem = document.querySelector('.weather-box__temperature');
-  // const apparentTemperatureElem = document.querySelector(
-  //   '.weather-box__apparent-temperature'
-  // );
   console.log(weatherData);
   const { currently } = weatherData;
   const {
@@ -20,7 +16,7 @@ export default function showWeather(weatherData) {
   const roundedApparentTemperature = Math.floor(apparentTemperature);
 
   insertDataIntoNode(roundedTemperature, '.weather-box__temperature');
-  insertDataIntoNode(icon, '.weather-box__icon');
+  insertIcon(icon);
   insertDataIntoNode(summary, '.weather-box__summary');
   insertDataIntoNode(
     `FEELS LIKE: ${roundedApparentTemperature}`,

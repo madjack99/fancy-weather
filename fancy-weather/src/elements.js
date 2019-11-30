@@ -39,7 +39,7 @@ weatherBox.classList.add('weather-box');
 const temperature = document.createElement('div');
 temperature.classList.add('weather-box__temperature');
 
-const icon = document.createElement('div');
+const icon = document.createElement('img');
 icon.classList.add('weather-box__icon');
 
 const summary = document.createElement('div');
