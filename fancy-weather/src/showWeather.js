@@ -23,5 +23,8 @@ export default function showWeather(weatherData) {
     '.weather-box__apparent-temperature'
   );
   insertDataIntoNode(`wind: ${windSpeed}`, '.weather-box__wind');
-  insertDataIntoNode(`humidity: ${humidity * 100}`, '.weather-box__humidity');
+  insertDataIntoNode(
+    `humidity: ${Math.trunc(humidity * 100)}`,
+    '.weather-box__humidity'
+  );
 }
