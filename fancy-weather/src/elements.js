@@ -93,8 +93,14 @@ dayThreeTemperature.classList.add('day__temperature', 'day-three__temperature');
 const dayThreeIcon = document.createElement('img');
 dayThreeIcon.classList.add('day__icon', 'day-three__icon');
 
+const visualSection = document.createElement('section');
+visualSection.classList.add('visual');
+
+const map = document.createElement('div');
+map.id = 'map';
+
 export default function buildHTMLContent() {
-  container.append(form, infoSection);
+  container.append(form, infoSection, visualSection);
 
   form.append(input, submitBtn);
   infoSection.append(
@@ -104,6 +110,7 @@ export default function buildHTMLContent() {
     weatherBox,
     threeDaysWeather
   );
+  visualSection.append(map);
 
   timeBox.append(hours, minutes);
   weatherBox.append(
