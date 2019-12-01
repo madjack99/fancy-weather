@@ -99,6 +99,15 @@ visualSection.classList.add('visual');
 const map = document.createElement('div');
 map.id = 'map';
 
+const coords = document.createElement('div');
+coords.classList.add('coords');
+
+const lng = document.createElement('div');
+lng.classList.add('coords__lng');
+
+const lat = document.createElement('div');
+lat.classList.add('coords__lat');
+
 export default function buildHTMLContent() {
   container.append(form, infoSection, visualSection);
 
@@ -110,7 +119,7 @@ export default function buildHTMLContent() {
     weatherBox,
     threeDaysWeather
   );
-  visualSection.append(map);
+  visualSection.append(map, coords);
 
   timeBox.append(hours, minutes);
   weatherBox.append(
@@ -126,4 +135,6 @@ export default function buildHTMLContent() {
   dayOne.append(dayOneName, dayOneTemperature, dayOneIcon);
   dayTwo.append(dayTwoName, dayTwoTemperature, dayTwoIcon);
   dayThree.append(dayThreeName, dayThreeTemperature, dayThreeIcon);
+
+  coords.append(lat, lng);
 }

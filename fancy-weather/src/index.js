@@ -6,7 +6,7 @@ import showWeather from './showWeather';
 import showDate from './showDate';
 import showThreeDaysWeather from './threeDaysWeather';
 import { showMap } from './map';
-import { getCityNameByCoords, insertDataIntoNode } from './helper';
+import { getCityNameByCoords, insertDataIntoNode, showCoords } from './helper';
 
 import './styles/main.scss';
 
@@ -25,6 +25,7 @@ async function initWithDefaultValues() {
   showWeather(weatherData);
   showThreeDaysWeather(weatherData);
   showMap(longitude, latitude);
+  showCoords(latitude, longitude);
 }
 
 buildHTMLContent();

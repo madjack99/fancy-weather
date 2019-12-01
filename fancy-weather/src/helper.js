@@ -81,3 +81,8 @@ export function insertIcon(iconDescription, nodeClassName) {
       iconElem.setAttribute('src', tornado);
   }
 }
+
+export function showCoords(lat, lng) {
+  insertDataIntoNode(`Latitude: ${lat.toFixed(2)}`, '.coords__lat');
+  insertDataIntoNode(`Longitude: ${lng.toFixed(2)}`, '.coords__lng');
+}

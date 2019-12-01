@@ -5,7 +5,7 @@ import showTime from './showTime';
 import showDate from './showDate';
 import showThreeDaysWeather from './threeDaysWeather';
 import { showMap } from './map';
-import { insertDataIntoNode } from './helper';
+import { insertDataIntoNode, showCoords } from './helper';
 
 const { openCageKey } = config;
 
@@ -47,4 +47,5 @@ export const handleCitySubmit = async e => {
   showWeather(weatherData);
   showThreeDaysWeather(weatherData);
   showMap(lng, lat);
+  showCoords(lat, lng);
 };
