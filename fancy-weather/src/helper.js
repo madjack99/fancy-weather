@@ -86,3 +86,35 @@ export function showCoords(lat, lng) {
   insertDataIntoNode(`Latitude: ${lat.toFixed(2)}`, '.coords__lat');
   insertDataIntoNode(`Longitude: ${lng.toFixed(2)}`, '.coords__lng');
 }
+
+export function getSeason(dateObj) {
+  switch (dateObj.getMonth()) {
+    case 0:
+    case 1:
+    case 11:
+      return 'winter';
+    case 2:
+    case 3:
+    case 4:
+      return 'spring';
+    case 5:
+    case 6:
+    case 7:
+      return 'summer';
+    case 8:
+    case 9:
+    case 10:
+      return 'autumn';
+    default:
+      return 'winter';
+  }
+}
+
+export function getPartOfTheDay(dateObj) {
+  const hour = dateObj.getHours();
+  if (hour >= 0 && hour < 3) return 'night';
+  if (hour >= 3 && hour < 9) return 'morning';
+  if (hour >= 9 && hour < 15) return 'day';
+  if (hour >= 15 && hour < 21) return 'evening';
+  if (hour >= 21 && hour <= 23) return 'night';
+}

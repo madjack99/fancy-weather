@@ -1,7 +1,6 @@
 import { insertDataIntoNode, insertIcon } from './helper';
 
 export default function showWeather(weatherData) {
-  console.log(weatherData);
   const { currently } = weatherData;
   const {
     temperature,

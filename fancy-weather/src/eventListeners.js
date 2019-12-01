@@ -4,6 +4,7 @@ import showWeather from './showWeather';
 import showTime from './showTime';
 import showDate from './showDate';
 import showThreeDaysWeather from './threeDaysWeather';
+import getPhotosFromFlickr from './flickr';
 import { showMap } from './map';
 import { insertDataIntoNode, showCoords } from './helper';
 
@@ -48,4 +49,5 @@ export const handleCitySubmit = async e => {
   showThreeDaysWeather(weatherData);
   showMap(lng, lat);
   showCoords(lat, lng);
+  getPhotosFromFlickr(dateObj, weatherData, city);
 };
