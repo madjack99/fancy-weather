@@ -4,6 +4,7 @@ import showWeather from './showWeather';
 import showTime from './showTime';
 import showDate from './showDate';
 import showThreeDaysWeather from './threeDaysWeather';
+import { showMap } from './map';
 import { insertDataIntoNode } from './helper';
 
 const { openCageKey } = config;
@@ -22,7 +23,8 @@ function getCoordsFromInput(input) {
       return {
         cityName,
         timeZone,
-        coordinates: `${lat},${lng}`
+        lat,
+        lng
       };
     });
 }
@@ -32,8 +34,8 @@ export const handleCitySubmit = async e => {
 
   const input = document.querySelector('.input');
   const city = input.value;
-  const { coordinates, timeZone, cityName } = await getCoordsFromInput(city);
-  const weatherData = await getWeather(coordinates);
+  const { lat, lng, timeZone, cityName } = await getCoordsFromInput(city);
+  const weatherData = await getWeather(`${lat},${lng}`);
   const selectedLocationDateString = new Date().toLocaleString('en-US', {
     timeZone
   });
@@ -44,4 +46,5 @@ export const handleCitySubmit = async e => {
   showTime(dateObj);
   showWeather(weatherData);
   showThreeDaysWeather(weatherData);
+  showMap(lng, lat);
 };

@@ -10,6 +10,9 @@
     "es6": true,
     "jest": true
   },
+  "globals": {
+    "mapboxgl": "readonly"
+  },
   "rules": {
     "linebreak-style": "off",
     "comma-dangle": [
@@ -22,6 +25,7 @@
     "arrow-parens": ["error", "as-needed"],
     "no-param-reassign": "off",
     "no-unused-expressions": ["off", { "allowTernary": true }],
-    "no-use-before-define": ["error", { "functions": false }]
+    "no-use-before-define": ["error", { "functions": false }],
+    "object-curly-newline": "off"
   }
 }
