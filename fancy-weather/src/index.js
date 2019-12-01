@@ -24,7 +24,7 @@ async function initWithDefaultValues() {
   showTime(dateObj);
   showWeather(weatherData);
   showThreeDaysWeather(weatherData);
-  showMap([longitude.toFixed(3), latitude.toFixed(3)]);
+  showMap(longitude, latitude);
 }
 
 buildHTMLContent();
