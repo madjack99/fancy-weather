@@ -32,6 +32,11 @@
       }
     }
 
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+
     &__icon,
     &__summary,
     &__apparent-temperature,
@@ -52,6 +57,11 @@
     .day {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
+      &__icon {
+        width: 20px;
+        height: 20px;
+      }
 
       &__name {
         grid-column: 1/3;

@@ -4,7 +4,8 @@ export default function showTime(dateObj) {
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
   hoursElem.innerText = `${hours} : `;
-  minutesElem.innerText = `${minutes < 10 ? '0' + minutes : minutes}`;
+  const adjustedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  minutesElem.innerText = `${adjustedMinutes}`;
 
   setInterval(() => {
     minutesElem.innerText === '59'

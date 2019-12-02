@@ -1,23 +1,9 @@
 @import './variables';
 @import './info';
+@import './visual';
 
 body {
   background: cyan;
-}
-
-.weather-box__icon {
-  width: 40px;
-  height: 40px;
-}
-
-.day__icon {
-  width: 20px;
-  height: 20px;
-}
-
-#map {
-  width: 200px;
-  height: 200px;
 }
 
 .container {
