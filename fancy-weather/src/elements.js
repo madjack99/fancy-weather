@@ -5,8 +5,18 @@ const container = document.querySelector('.container');
 const infoSection = document.createElement('section');
 infoSection.classList.add('info');
 
+const header = document.createElement('header');
+header.classList.add('header');
+
+const toolBar = document.createElement('div');
+toolBar.classList.add('tool-bar');
+
+const refresh = document.createElement('button');
+refresh.classList.add('refresh');
+
 const input = document.createElement('input');
 input.classList.add('input');
+input.required = true;
 input.setAttribute('type', 'text');
 
 const submitBtn = document.createElement('input');
@@ -115,11 +125,15 @@ const centeredTemperature = document.createElement('div');
 centeredTemperature.classList.add('weather-box__temperature_centered');
 
 export default function buildHTMLContent() {
-  container.append(form, main);
+  container.append(header, main);
+
+  header.append(toolBar, form);
+
+  toolBar.append(refresh);
+  form.append(input, submitBtn);
 
   main.append(infoSection, visualSection);
 
-  form.append(input, submitBtn);
   infoSection.append(
     locationName,
     dateBox,

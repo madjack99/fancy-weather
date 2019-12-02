@@ -1,15 +1,23 @@
 @import './variables';
 @import './info';
 @import './visual';
+@import './toolBar.scss';
 
 body {
   background: cyan;
 }
 
 .container {
+  height: 100vh;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 0 40px;
 }
 
 .main {

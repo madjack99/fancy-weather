@@ -1,0 +1,15 @@
+.tool-bar {
+  .refresh {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background: $blackTrans url('../../static/images/refresh-icon.png') center
+      no-repeat;
+    background-size: contain;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
