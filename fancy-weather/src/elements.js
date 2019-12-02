@@ -55,7 +55,7 @@ const humidity = document.createElement('div');
 humidity.classList.add('weather-box__humidity');
 
 const threeDaysWeather = document.createElement('div');
-threeDaysWeather.classList.add('.three-days-weather');
+threeDaysWeather.classList.add('three-days-weather');
 
 const dayOne = document.createElement('div');
 dayOne.classList.add('day', 'day-one');
@@ -108,8 +108,16 @@ lng.classList.add('coords__lng');
 const lat = document.createElement('div');
 lat.classList.add('coords__lat');
 
+const main = document.createElement('main');
+main.classList.add('main');
+
+const centeredTemperature = document.createElement('div');
+centeredTemperature.classList.add('weather-box__temperature_centered');
+
 export default function buildHTMLContent() {
-  container.append(form, infoSection, visualSection);
+  container.append(form, main);
+
+  main.append(infoSection, visualSection);
 
   form.append(input, submitBtn);
   infoSection.append(
@@ -122,6 +130,7 @@ export default function buildHTMLContent() {
   visualSection.append(map, coords);
 
   timeBox.append(hours, minutes);
+
   weatherBox.append(
     temperature,
     icon,
@@ -130,6 +139,7 @@ export default function buildHTMLContent() {
     wind,
     humidity
   );
+  temperature.append(centeredTemperature);
 
   threeDaysWeather.append(dayOne, dayTwo, dayThree);
   dayOne.append(dayOneName, dayOneTemperature, dayOneIcon);

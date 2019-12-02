@@ -14,7 +14,7 @@ export default function showWeather(weatherData) {
   const roundedTemperature = Math.floor(temperature);
   const roundedApparentTemperature = Math.floor(apparentTemperature);
 
-  insertDataIntoNode(roundedTemperature, '.weather-box__temperature');
+  insertDataIntoNode(roundedTemperature, '.weather-box__temperature_centered');
   insertIcon(icon, '.weather-box__icon');
   insertDataIntoNode(summary, '.weather-box__summary');
   insertDataIntoNode(
