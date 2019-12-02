@@ -3,9 +3,8 @@ export default function showTime(dateObj) {
   const minutesElem = document.querySelector('.time-box__minutes');
   const hours = dateObj.getHours();
   const minutes = dateObj.getMinutes();
-
-  hoursElem.innerText = hours;
-  minutesElem.innerText = minutes;
+  hoursElem.innerText = `${hours < 10 ? `0${hours}` : hours} : `;
+  minutesElem.innerText = `${minutes}`;
 
   setInterval(() => {
     minutesElem.innerText === '59'
