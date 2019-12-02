@@ -1,4 +1,4 @@
-import { handleCitySubmit } from './eventListeners';
+import { handleCitySubmit, handleRefreshClick } from './eventListeners';
 
 const container = document.querySelector('.container');
 
@@ -13,6 +13,7 @@ toolBar.classList.add('tool-bar');
 
 const refresh = document.createElement('button');
 refresh.classList.add('refresh');
+refresh.addEventListener('click', handleRefreshClick);
 
 const input = document.createElement('input');
 input.classList.add('input');

@@ -6,6 +6,7 @@ import showWeather from './showWeather';
 import showDate from './showDate';
 import showThreeDaysWeather from './threeDaysWeather';
 import getPhotosFromFlickr from './flickr';
+import { store } from './store';
 import { showMap } from './map';
 import { getCityNameByCoords, insertDataIntoNode, showCoords } from './helper';
 
@@ -18,6 +19,9 @@ async function initWithDefaultValues() {
   const dateObj = new Date(timestamp);
   const weatherData = await getWeather(`${latitude},${longitude}`);
   const cityName = await getCityNameByCoords(`${latitude},${longitude}`);
+
+  store.dateObj = dateObj;
+  store.weatherData = weatherData;
 
   showDate(dateObj);
   insertDataIntoNode(cityName, '.location-name');
