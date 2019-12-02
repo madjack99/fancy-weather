@@ -8,16 +8,18 @@ export default function showTime(dateObj) {
   minutesElem.innerText = `${adjustedMinutes}`;
 
   setInterval(() => {
-    minutesElem.innerText === '59'
-      ? (minutesElem.innerText = '0')
-      : (minutesElem.innerText = +minutesElem.innerText + 1);
-
-    minutesElem.innerText === '0'
-      ? (hoursElem.innerText = +hoursElem.innerText + 1)
-      : null;
-
-    if (hoursElem.innerText === '24') {
-      hoursElem.innerText = '0';
+    let intervalMinutes = +minutesElem.innerText + 1;
+    let intervalHours = +hoursElem.innerText.split(' ')[0];
+    if (intervalMinutes === 60) {
+      intervalMinutes = 0;
+      intervalHours += 1;
     }
+    const adjustedIntervalMinutes =
+      intervalMinutes < 10 ? `0${intervalMinutes}` : intervalMinutes;
+
+    const adjustedIntervalHours = intervalHours === 24 ? 0 : intervalHours;
+
+    minutesElem.innerText = adjustedIntervalMinutes;
+    hoursElem.innerText = `${adjustedIntervalHours} : `;
   }, 60000);
 }
