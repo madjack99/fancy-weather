@@ -26,7 +26,7 @@ async function initWithDefaultValues() {
   showThreeDaysWeather(weatherData);
   showMap(longitude, latitude);
   showCoords(latitude, longitude);
-  getPhotosFromFlickr(dateObj, weatherData, cityName);
+  getPhotosFromFlickr(dateObj, weatherData);
 }
 
 buildHTMLContent();

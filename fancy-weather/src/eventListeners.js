@@ -49,5 +49,5 @@ export const handleCitySubmit = async e => {
   showThreeDaysWeather(weatherData);
   showMap(lng, lat);
   showCoords(lat, lng);
-  getPhotosFromFlickr(dateObj, weatherData, city);
+  getPhotosFromFlickr(dateObj, weatherData);
 };
