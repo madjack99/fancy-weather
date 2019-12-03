@@ -6,9 +6,9 @@ const { flickrKey } = config;
 export default function getPhotosFromFlickr(dateObj, weatherData) {
   const season = getSeason(dateObj);
   const partOfTheDay = getPartOfTheDay(dateObj);
-  const weatherCondition = getWeatherCondition(weatherData);
-  const tagsString = `${season}%2C+${partOfTheDay}%2C+${weatherCondition}`;
-
+  // const weatherCondition = getWeatherCondition(weatherData);
+  const tagsString = `${season}%2C+${partOfTheDay}`;
+  console.log(tagsString);
   fetch(
     `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickrKey}&tags=${tagsString}&tag_mode=all&per_page=100&format=json&nojsoncallback=1`
   )
