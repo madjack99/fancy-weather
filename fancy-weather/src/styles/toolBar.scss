@@ -2,10 +2,13 @@
   .refresh {
     width: 25px;
     height: 25px;
+    padding: 3px;
     border: none;
     background: $blackTrans url('../../static/images/refresh-icon.png') center
       no-repeat;
     background-size: contain;
+    background-origin: content-box;
+    border-radius: 3px;
     cursor: pointer;
 
     &:hover {
