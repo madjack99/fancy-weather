@@ -15,6 +15,17 @@ const refresh = document.createElement('button');
 refresh.classList.add('refresh');
 refresh.addEventListener('click', handleRefreshClick);
 
+const tempUnits = document.createElement('div');
+tempUnits.classList.add('temp-units');
+
+const fahrenheit = document.createElement('button');
+fahrenheit.classList.add('temp-units__fahrenheit', 'temp-units__unit');
+fahrenheit.innerText = 'F';
+
+const celsius = document.createElement('button');
+celsius.classList.add('temp-units__celsius', 'temp-units__unit', 'active');
+celsius.innerText = 'C';
+
 const input = document.createElement('input');
 input.classList.add('input');
 input.required = true;
@@ -130,8 +141,10 @@ export default function buildHTMLContent() {
 
   header.append(toolBar, form);
 
-  toolBar.append(refresh);
+  toolBar.append(refresh, tempUnits);
   form.append(input, submitBtn);
+
+  tempUnits.append(fahrenheit, celsius);
 
   main.append(infoSection, visualSection);
 
