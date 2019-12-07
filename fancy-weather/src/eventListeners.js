@@ -77,10 +77,13 @@ export function switchTempUnits(e) {
   switch (e.target.innerText) {
     case 'F':
       fahrenheit.classList.add('active');
+      if (store.temperatureUnits === 'F') break;
       switchToFahrenheit(divsWithTemp);
       break;
     case 'C':
       celsius.classList.add('active');
+      if (store.temperatureUnits === 'C') break;
+      switchToCelsius(divsWithTemp);
       break;
     default:
       break;
@@ -90,6 +93,17 @@ export function switchTempUnits(e) {
 function switchToFahrenheit(temperatureDivsArr) {
   temperatureDivsArr.forEach(div => {
     const fahrenheitTemp = (+div.innerText * 9) / 5 + 32;
-    div.innerText = Math.trunc(fahrenheitTemp);
+    div.innerText = Math.round(fahrenheitTemp);
   });
+
+  store.temperatureUnits = 'F';
+}
+
+function switchToCelsius(temperatureDivsArr) {
+  temperatureDivsArr.forEach(div => {
+    const celsiusTemp = ((+div.innerText - 32) * 5) / 9;
+    div.innerText = Math.round(celsiusTemp);
+  });
+
+  store.temperatureUnits = 'C';
 }

@@ -1,4 +1,5 @@
 export const store = {
   weatherData: null,
-  dateObj: null
+  dateObj: null,
+  temperatureUnits: 'C'
 };
