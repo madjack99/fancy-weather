@@ -58,3 +58,38 @@ export function handleRefreshClick() {
 
   getPhotosFromFlickr(dateObj, weatherData);
 }
+
+export function switchTempUnits(e) {
+  const fahrenheit = document.querySelector('.temp-units__fahrenheit');
+  const celsius = document.querySelector('.temp-units__celsius');
+
+  const mainTemp = document.querySelector('.weather-box__temperature_centered');
+  const dayOneTemp = document.querySelector('.day-one__temperature');
+  const dayTwoTemp = document.querySelector('.day-two__temperature');
+  const dayThreeTemp = document.querySelector('.day-three__temperature');
+
+  const divsWithTemp = [mainTemp, dayOneTemp, dayTwoTemp, dayThreeTemp];
+
+  Array.from(e.currentTarget.children).forEach(child => {
+    child.classList.remove('active');
+  });
+
+  switch (e.target.innerText) {
+    case 'F':
+      fahrenheit.classList.add('active');
+      switchToFahrenheit(divsWithTemp);
+      break;
+    case 'C':
+      celsius.classList.add('active');
+      break;
+    default:
+      break;
+  }
+}
+
+function switchToFahrenheit(temperatureDivsArr) {
+  temperatureDivsArr.forEach(div => {
+    const fahrenheitTemp = (+div.innerText * 9) / 5 + 32;
+    div.innerText = Math.trunc(fahrenheitTemp);
+  });
+}

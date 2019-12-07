@@ -1,4 +1,8 @@
-import { handleCitySubmit, handleRefreshClick } from './eventListeners';
+import {
+  handleCitySubmit,
+  handleRefreshClick,
+  switchTempUnits
+} from './eventListeners';
 
 const container = document.querySelector('.container');
 
@@ -17,6 +21,7 @@ refresh.addEventListener('click', handleRefreshClick);
 
 const tempUnits = document.createElement('div');
 tempUnits.classList.add('temp-units');
+tempUnits.addEventListener('click', switchTempUnits);
 
 const fahrenheit = document.createElement('button');
 fahrenheit.classList.add('temp-units__fahrenheit', 'temp-units__unit');
