@@ -19,12 +19,15 @@ export default function showWeather(weatherData, lang) {
   insertIcon(icon, '.weather-box__icon');
   insertDataIntoNode(summary, '.weather-box__summary');
   insertDataIntoNode(
-    `${translations[lang].feelsLike} ${roundedApparentTemperature}`,
+    `${translations[lang].feelsLike}: ${roundedApparentTemperature}`,
     '.weather-box__apparent-temperature'
   );
-  insertDataIntoNode(`wind: ${windSpeed}`, '.weather-box__wind');
   insertDataIntoNode(
-    `humidity: ${Math.trunc(humidity * 100)}`,
+    `${translations[lang].wind}: ${windSpeed}`,
+    '.weather-box__wind'
+  );
+  insertDataIntoNode(
+    `${translations[lang].humidity}: ${Math.trunc(humidity * 100)}`,
     '.weather-box__humidity'
   );
 }

@@ -15,7 +15,9 @@ const translations = {
       'December'
     ],
     WEEKDAYS: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    feelsLike: 'feels like: '
+    feelsLike: 'feels like',
+    wind: 'wind',
+    humidity: 'humidity'
   },
   be: {
     MONTHS: [
@@ -33,7 +35,9 @@ const translations = {
       'Снежань'
     ],
     WEEKDAYS: ['Няд', 'Пан', 'Аут', 'Сер', 'Чат', 'Пят', 'Суб'],
-    feelsLike: 'адчуваецца як: '
+    feelsLike: 'адчуваецца як',
+    wind: 'вецер',
+    humidity: 'вiльготнасць'
   },
   ru: {
     MONTHS: [
@@ -51,7 +55,9 @@ const translations = {
       'Декабрь'
     ],
     WEEKDAYS: ['Вос', 'Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб'],
-    feelsLike: 'ощущается как: '
+    feelsLike: 'ощущается как',
+    wind: 'ветер',
+    humidity: 'влажность'
   }
 };
 
