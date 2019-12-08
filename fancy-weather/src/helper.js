@@ -12,12 +12,13 @@ import snow from '../static/images/weather/snow.png';
 import thunderstorm from '../static/images/weather/thunderstorm.png';
 import tornado from '../static/images/weather/tornado.png';
 import wind from '../static/images/weather/wind.png';
+import { store } from './store';
 
 const { openCageKey } = config;
 
-export function getCityNameByCoords(coords) {
+export function getCityNameByCoords(coords, lang = 'en') {
   return fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${coords}&key=${openCageKey}&pretty=1`
+    `https://api.opencagedata.com/geocode/v1/json?q=${coords}&key=${openCageKey}&pretty=1&language=${lang}`
   )
     .then(res => res.json())
     .then(data => {
@@ -117,4 +118,15 @@ export function getPartOfTheDay(dateObj) {
   if (hour >= 9 && hour < 15) return 'day';
   if (hour >= 15 && hour < 21) return 'evening';
   if (hour >= 21 && hour <= 23) return 'night';
+}
+
+export function getDataFromLocalStorage() {
+  const savedTemperatureUnits = localStorage.getItem('temperatureUnits');
+  if (savedTemperatureUnits) {
+    store.temperatureUnits = savedTemperatureUnits;
+  }
+
+  if (savedTemperatureUnits === 'F') {
+    document.querySelector('.temp-units__fahrenheit').click();
+  }
 }

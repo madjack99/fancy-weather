@@ -34,10 +34,11 @@ function getCoordsFromInput(input) {
 export const handleCitySubmit = async e => {
   e.preventDefault();
 
+  const { temperatureUnits } = store;
   const input = document.querySelector('.input');
   const city = input.value;
   const { lat, lng, timeZone, cityName } = await getCoordsFromInput(city);
-  const weatherData = await getWeather(`${lat},${lng}`);
+  const weatherData = await getWeather(`${lat},${lng}`, temperatureUnits);
   const selectedLocationDateString = new Date().toLocaleString('en-US', {
     timeZone
   });
@@ -97,6 +98,7 @@ function switchToFahrenheit(temperatureDivsArr) {
   });
 
   store.temperatureUnits = 'F';
+  localStorage.setItem('temperatureUnits', 'F');
 }
 
 function switchToCelsius(temperatureDivsArr) {
@@ -106,4 +108,5 @@ function switchToCelsius(temperatureDivsArr) {
   });
 
   store.temperatureUnits = 'C';
+  localStorage.setItem('temperatureUnits', 'C');
 }

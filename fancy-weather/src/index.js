@@ -8,16 +8,27 @@ import showThreeDaysWeather from './threeDaysWeather';
 import getPhotosFromFlickr from './flickr';
 import { store } from './store';
 import { showMap } from './map';
-import { getCityNameByCoords, insertDataIntoNode, showCoords } from './helper';
+import {
+  getCityNameByCoords,
+  insertDataIntoNode,
+  showCoords,
+  getDataFromLocalStorage
+} from './helper';
 
 import './styles/main.scss';
 
 async function initWithDefaultValues() {
+  getDataFromLocalStorage();
+
+  const { temperatureUnits } = store;
   const locationObject = await getCurrentLocationObject();
   const { latitude, longitude } = locationObject.coords;
   const { timestamp } = locationObject;
   const dateObj = new Date(timestamp);
-  const weatherData = await getWeather(`${latitude},${longitude}`);
+  const weatherData = await getWeather(
+    `${latitude},${longitude}`,
+    temperatureUnits
+  );
   const cityName = await getCityNameByCoords(`${latitude},${longitude}`);
 
   store.dateObj = dateObj;
