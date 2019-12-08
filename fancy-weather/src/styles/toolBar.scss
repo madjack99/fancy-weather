@@ -1,7 +1,7 @@
 .tool-bar {
   display: flex;
   justify-content: space-between;
-  width: 100px;
+  width: 200px;
 
   .refresh {
     width: 25px;
@@ -22,17 +22,17 @@
 
   .temp-units {
     &__unit {
-      height: 25px;
-      width: 25px;
-      border: 0.5px solid $primary;
-      color: $primary;
-      background: $blackTrans;
-      border-radius: 3px;
-      cursor: pointer;
+      @include styledButtons;
+    }
 
-      &:hover {
-        transform: scale(1.1);
-      }
+    .active {
+      background: salmon;
+    }
+  }
+
+  .lang-box {
+    &__lang {
+      @include styledButtons;
     }
 
     .active {

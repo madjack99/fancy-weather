@@ -31,6 +31,21 @@ const celsius = document.createElement('button');
 celsius.classList.add('temp-units__celsius', 'temp-units__unit', 'active');
 celsius.innerText = 'C';
 
+const langBox = document.createElement('div');
+langBox.classList.add('lang-box');
+
+const ru = document.createElement('button');
+ru.classList.add('lang-box__ru', 'lang-box__lang');
+ru.innerText = 'ru';
+
+const be = document.createElement('button');
+be.classList.add('lang-box__be', 'lang-box__lang');
+be.innerText = 'be';
+
+const en = document.createElement('button');
+en.classList.add('lang-box__en', 'lang-box__lang', 'active');
+en.innerText = 'en';
+
 const input = document.createElement('input');
 input.classList.add('input');
 input.required = true;
@@ -146,10 +161,12 @@ export default function buildHTMLContent() {
 
   header.append(toolBar, form);
 
-  toolBar.append(refresh, tempUnits);
+  toolBar.append(refresh, tempUnits, langBox);
   form.append(input, submitBtn);
 
   tempUnits.append(fahrenheit, celsius);
+
+  langBox.append(en, be, ru);
 
   main.append(infoSection, visualSection);
 
