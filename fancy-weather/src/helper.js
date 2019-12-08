@@ -12,6 +12,7 @@ import snow from '../static/images/weather/snow.png';
 import thunderstorm from '../static/images/weather/thunderstorm.png';
 import tornado from '../static/images/weather/tornado.png';
 import wind from '../static/images/weather/wind.png';
+import translations from './translations';
 import { store } from './store';
 
 const { openCageKey } = config;
@@ -83,9 +84,19 @@ export function insertIcon(iconDescription, nodeClassName) {
   }
 }
 
-export function showCoords(lat, lng) {
-  insertDataIntoNode(`Latitude: ${lat.toFixed(2)}`, '.coords__lat');
-  insertDataIntoNode(`Longitude: ${lng.toFixed(2)}`, '.coords__lng');
+export function showCoords(lat, lng, lang = 'en') {
+  if (typeof lat === 'string') {
+    lng = +lng;
+    lat = +lat;
+  }
+  insertDataIntoNode(
+    `${translations[lang].latitude}: ${lat.toFixed(2)}`,
+    '.coords__lat'
+  );
+  insertDataIntoNode(
+    `${translations[lang].longitude}: ${lng.toFixed(2)}`,
+    '.coords__lng'
+  );
 }
 
 export function getSeason(dateObj) {

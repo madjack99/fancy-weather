@@ -106,6 +106,8 @@ export function changeLang(e) {
       );
 
       showWeather(weatherData, store.lang);
+      console.log(...store.coords.split(','));
+      showCoords(...store.coords.split(','), store.lang);
     }
   });
 }
