@@ -58,6 +58,9 @@ submitBtn.classList.add('submit');
 submitBtn.setAttribute('type', 'submit');
 submitBtn.setAttribute('value', 'Search');
 
+const speechRecognition = document.createElement('div');
+speechRecognition.classList.add('speech-recognition');
+
 const form = document.createElement('form');
 form.classList.add('form');
 form.addEventListener('submit', handleCitySubmit);
@@ -164,7 +167,7 @@ export default function buildHTMLContent() {
   header.append(toolBar, form);
 
   toolBar.append(refresh, tempUnits, langBox);
-  form.append(input, submitBtn);
+  form.append(input, submitBtn, speechRecognition);
 
   tempUnits.append(fahrenheit, celsius);
 
