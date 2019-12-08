@@ -1,7 +1,8 @@
 import {
   handleCitySubmit,
   handleRefreshClick,
-  switchTempUnits
+  switchTempUnits,
+  changeLang
 } from './eventListeners';
 
 const container = document.querySelector('.container');
@@ -33,6 +34,7 @@ celsius.innerText = 'C';
 
 const langBox = document.createElement('div');
 langBox.classList.add('lang-box');
+langBox.addEventListener('click', changeLang);
 
 const ru = document.createElement('button');
 ru.classList.add('lang-box__ru', 'lang-box__lang');

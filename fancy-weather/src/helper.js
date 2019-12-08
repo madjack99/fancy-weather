@@ -122,6 +122,8 @@ export function getPartOfTheDay(dateObj) {
 
 export function getDataFromLocalStorage() {
   const savedTemperatureUnits = localStorage.getItem('temperatureUnits');
+  const savedLang = localStorage.getItem('lang');
+
   if (savedTemperatureUnits) {
     store.temperatureUnits = savedTemperatureUnits;
   }
@@ -129,4 +131,8 @@ export function getDataFromLocalStorage() {
   if (savedTemperatureUnits === 'F') {
     document.querySelector('.temp-units__fahrenheit').click();
   }
+
+  Array.from(document.querySelector('.lang-box').children).forEach(lang => {
+    if (lang.innerText === savedLang) lang.click();
+  });
 }

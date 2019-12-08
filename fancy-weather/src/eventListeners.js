@@ -110,3 +110,20 @@ function switchToCelsius(temperatureDivsArr) {
   store.temperatureUnits = 'C';
   localStorage.setItem('temperatureUnits', 'C');
 }
+
+export function changeLang(e) {
+  const curLang = store.lang;
+  const langBoxChildren = Array.from(e.currentTarget.children);
+
+  langBoxChildren.forEach(lang => {
+    lang.classList.remove('active');
+    if (lang.innerText === e.target.innerText) {
+      lang.classList.add('active');
+      if (lang.innerText !== curLang) {
+        localStorage.setItem('lang', lang.innerText);
+        store.lang = lang.innerText;
+        showDate(store.dateObj, lang.innerText);
+      }
+    }
+  });
+}
