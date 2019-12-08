@@ -1,0 +1,22 @@
+.form {
+  @include fitPadWithTrans;
+
+  .input {
+    padding: 3px;
+    background: $blackTrans;
+    border: none;
+    border-bottom: 1px solid $primary;
+    color: $primary;
+  }
+
+  .submit {
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: darken($primary, 3);
+    color: $secondary;
+    border: none;
+    text-transform: uppercase;
+  }
+}
