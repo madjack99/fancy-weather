@@ -1,6 +1,7 @@
 import { insertDataIntoNode, insertIcon } from './helper';
+import translations from './translations';
 
-export default function showWeather(weatherData) {
+export default function showWeather(weatherData, lang) {
   const { currently } = weatherData;
   const {
     temperature,
@@ -18,7 +19,7 @@ export default function showWeather(weatherData) {
   insertIcon(icon, '.weather-box__icon');
   insertDataIntoNode(summary, '.weather-box__summary');
   insertDataIntoNode(
-    `FEELS LIKE: ${roundedApparentTemperature}`,
+    `${translations[lang].feelsLike} ${roundedApparentTemperature}`,
     '.weather-box__apparent-temperature'
   );
   insertDataIntoNode(`wind: ${windSpeed}`, '.weather-box__wind');

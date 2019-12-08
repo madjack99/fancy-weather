@@ -36,7 +36,7 @@ async function initWithDefaultValues() {
   showDate(dateObj, lang);
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
-  showWeather(weatherData);
+  showWeather(weatherData, lang);
   showThreeDaysWeather(weatherData, lang);
   showMap(longitude, latitude);
   showCoords(latitude, longitude);

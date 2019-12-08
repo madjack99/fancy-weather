@@ -49,7 +49,7 @@ export const handleCitySubmit = async e => {
   showDate(dateObj, lang);
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
-  showWeather(weatherData);
+  showWeather(weatherData, lang);
   showThreeDaysWeather(weatherData, lang);
   showMap(lng, lat);
   showCoords(lat, lng);
@@ -74,7 +74,7 @@ export function switchTempUnits(e) {
       store.weatherData = weatherData;
       localStorage.temperatureUnits = e.target.innerText;
 
-      showWeather(weatherData);
+      showWeather(weatherData, store.lang);
       showThreeDaysWeather(weatherData, store.lang);
     }
   });
@@ -98,12 +98,18 @@ export function changeLang(e) {
       const cityName = await getCityNameByCoords(store.coords, store.lang);
       insertDataIntoNode(cityName, '.location-name');
 
-      const { currently } = await getWeather(
+      const weatherData = await getWeather(
         store.coords,
         e.target.innerText,
         store.lang
       );
-      insertDataIntoNode(currently.summary, '.weather-box__summary');
+
+      insertDataIntoNode(
+        weatherData.currently.summary,
+        '.weather-box__summary'
+      );
+
+      showWeather(weatherData, store.lang);
     }
   });
 }
