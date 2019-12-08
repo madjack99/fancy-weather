@@ -52,7 +52,7 @@ export const handleCitySubmit = async e => {
   showWeather(weatherData, lang);
   showThreeDaysWeather(weatherData, lang);
   showMap(lng, lat);
-  showCoords(lat, lng);
+  showCoords(lat, lng, lang);
   getPhotosFromFlickr(dateObj, weatherData);
 };
 
@@ -106,7 +106,6 @@ export function changeLang(e) {
       );
 
       showWeather(weatherData, store.lang);
-      console.log(...store.coords.split(','));
       showCoords(...store.coords.split(','), store.lang);
     }
   });
