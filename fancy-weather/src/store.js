@@ -1,5 +1,6 @@
 export const store = {
   weatherData: null,
   dateObj: null,
-  temperatureUnits: 'C'
+  temperatureUnits: 'C',
+  lang: 'en'
 };

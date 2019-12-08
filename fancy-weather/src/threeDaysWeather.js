@@ -1,16 +1,14 @@
-import config from './config';
+import translations from './translations';
 import { insertDataIntoNode, insertIcon } from './helper';
 
-const { WEEKDAYS } = config;
-
-export default function showThreeDaysWeather(weatherObj) {
+export default function showThreeDaysWeather(weatherObj, lang) {
   const dayOneObj = weatherObj.daily.data[1];
   const dayTwoObj = weatherObj.daily.data[2];
   const dayThreeObj = weatherObj.daily.data[3];
 
-  const dayOneName = getName(dayOneObj);
-  const dayTwoName = getName(dayTwoObj);
-  const dayThreeName = getName(dayThreeObj);
+  const dayOneName = getName(dayOneObj, lang);
+  const dayTwoName = getName(dayTwoObj, lang);
+  const dayThreeName = getName(dayThreeObj, lang);
 
   const dayOneTemp = getTemp(dayOneObj);
   const dayTwoTemp = getTemp(dayTwoObj);
@@ -39,7 +37,7 @@ function getTemp(dayObj) {
   );
 }
 
-function getName(dayObj) {
+function getName(dayObj, lang) {
   const dateObj = new Date(dayObj.time * 1000);
-  return WEEKDAYS[dateObj.getDay()];
+  return translations[lang].WEEKDAYS[dateObj.getDay()];
 }

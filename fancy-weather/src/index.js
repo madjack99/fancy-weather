@@ -20,7 +20,7 @@ import './styles/main.scss';
 async function initWithDefaultValues() {
   getDataFromLocalStorage();
 
-  const { temperatureUnits } = store;
+  const { temperatureUnits, lang } = store;
   const locationObject = await getCurrentLocationObject();
   const { latitude, longitude } = locationObject.coords;
   const { timestamp } = locationObject;
@@ -34,11 +34,11 @@ async function initWithDefaultValues() {
   store.dateObj = dateObj;
   store.weatherData = weatherData;
 
-  showDate(dateObj);
+  showDate(dateObj, lang);
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
   showWeather(weatherData);
-  showThreeDaysWeather(weatherData);
+  showThreeDaysWeather(weatherData, lang);
   showMap(longitude, latitude);
   showCoords(latitude, longitude);
   getPhotosFromFlickr(dateObj, weatherData);
