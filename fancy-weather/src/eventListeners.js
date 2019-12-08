@@ -34,7 +34,7 @@ function getCoordsFromInput(input) {
 export const handleCitySubmit = async e => {
   e.preventDefault();
 
-  const { temperatureUnits } = store;
+  const { temperatureUnits, lang } = store;
   const input = document.querySelector('.input');
   const city = input.value;
   const { lat, lng, timeZone, cityName } = await getCoordsFromInput(city);
@@ -44,11 +44,13 @@ export const handleCitySubmit = async e => {
   });
   const dateObj = new Date(selectedLocationDateString);
 
-  showDate(dateObj);
+  store.coords = `${lat},${lng}`;
+
+  showDate(dateObj, lang);
   insertDataIntoNode(cityName, '.location-name');
   showTime(dateObj);
   showWeather(weatherData);
-  showThreeDaysWeather(weatherData);
+  showThreeDaysWeather(weatherData, lang);
   showMap(lng, lat);
   showCoords(lat, lng);
   getPhotosFromFlickr(dateObj, weatherData);
