@@ -32,6 +32,7 @@ function getCoordsFromInput(input, lang) {
 }
 
 export const handleCitySubmit = async e => {
+  console.log('handling submit');
   e.preventDefault();
 
   const { temperatureUnits, lang } = store;

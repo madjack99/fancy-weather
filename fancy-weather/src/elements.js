@@ -1,3 +1,4 @@
+import handleRecognition from './speechRecognition';
 import {
   handleCitySubmit,
   handleRefreshClick,
@@ -60,6 +61,7 @@ submitBtn.setAttribute('value', 'Search');
 
 const speechRecognition = document.createElement('div');
 speechRecognition.classList.add('speech-recognition');
+speechRecognition.addEventListener('click', handleRecognition);
 
 const form = document.createElement('form');
 form.classList.add('form');
