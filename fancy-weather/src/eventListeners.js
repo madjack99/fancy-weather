@@ -72,6 +72,7 @@ export function switchTempUnits(e) {
       const weatherData = await getWeather(store.coords, e.target.innerText);
 
       store.weatherData = weatherData;
+      store.temperatureUnits = e.target.innerText;
       localStorage.temperatureUnits = e.target.innerText;
 
       showWeather(weatherData, store.lang);
@@ -100,13 +101,8 @@ export function changeLang(e) {
 
       const weatherData = await getWeather(
         store.coords,
-        e.target.innerText,
+        store.temperatureUnits,
         store.lang
-      );
-
-      insertDataIntoNode(
-        weatherData.currently.summary,
-        '.weather-box__summary'
       );
 
       showWeather(weatherData, store.lang);
