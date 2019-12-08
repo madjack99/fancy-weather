@@ -61,69 +61,37 @@ export function handleRefreshClick() {
 }
 
 export function switchTempUnits(e) {
-  const fahrenheit = document.querySelector('.temp-units__fahrenheit');
-  const celsius = document.querySelector('.temp-units__celsius');
-
-  const mainTemp = document.querySelector('.weather-box__temperature_centered');
-  const dayOneTemp = document.querySelector('.day-one__temperature');
-  const dayTwoTemp = document.querySelector('.day-two__temperature');
-  const dayThreeTemp = document.querySelector('.day-three__temperature');
-
-  const divsWithTemp = [mainTemp, dayOneTemp, dayTwoTemp, dayThreeTemp];
-
-  Array.from(e.currentTarget.children).forEach(child => {
+  Array.from(e.currentTarget.children).forEach(async child => {
     child.classList.remove('active');
+
+    if (child.innerText === e.target.innerText) {
+      child.classList.add('active');
+
+      const weatherData = await getWeather(store.coords, e.target.innerText);
+
+      store.weatherData = weatherData;
+      localStorage.temperatureUnits = e.target.innerText;
+
+      showWeather(weatherData);
+      showThreeDaysWeather(weatherData, store.lang);
+    }
   });
-
-  switch (e.target.innerText) {
-    case 'F':
-      fahrenheit.classList.add('active');
-      if (store.temperatureUnits === 'F') break;
-      switchToFahrenheit(divsWithTemp);
-      break;
-    case 'C':
-      celsius.classList.add('active');
-      if (store.temperatureUnits === 'C') break;
-      switchToCelsius(divsWithTemp);
-      break;
-    default:
-      break;
-  }
-}
-
-function switchToFahrenheit(temperatureDivsArr) {
-  temperatureDivsArr.forEach(div => {
-    const fahrenheitTemp = (+div.innerText * 9) / 5 + 32;
-    div.innerText = Math.round(fahrenheitTemp);
-  });
-
-  store.temperatureUnits = 'F';
-  localStorage.setItem('temperatureUnits', 'F');
-}
-
-function switchToCelsius(temperatureDivsArr) {
-  temperatureDivsArr.forEach(div => {
-    const celsiusTemp = ((+div.innerText - 32) * 5) / 9;
-    div.innerText = Math.round(celsiusTemp);
-  });
-
-  store.temperatureUnits = 'C';
-  localStorage.setItem('temperatureUnits', 'C');
 }
 
 export function changeLang(e) {
-  const curLang = store.lang;
   const langBoxChildren = Array.from(e.currentTarget.children);
 
   langBoxChildren.forEach(lang => {
     lang.classList.remove('active');
+
     if (lang.innerText === e.target.innerText) {
       lang.classList.add('active');
-      if (lang.innerText !== curLang) {
-        localStorage.setItem('lang', lang.innerText);
-        store.lang = lang.innerText;
-        showDate(store.dateObj, lang.innerText);
-      }
+
+      localStorage.setItem('lang', lang.innerText);
+      store.lang = lang.innerText;
+
+      showDate(store.dateObj, lang.innerText);
+      showThreeDaysWeather(store.weatherData, lang.innerText);
     }
   });
 }
