@@ -7,13 +7,13 @@ import showThreeDaysWeather from './threeDaysWeather';
 import getPhotosFromFlickr from './flickr';
 import { store } from './store';
 import { showMap } from './map';
-import { insertDataIntoNode, showCoords } from './helper';
+import { insertDataIntoNode, showCoords, getCityNameByCoords } from './helper';
 
 const { openCageKey } = config;
 
-function getCoordsFromInput(input) {
+function getCoordsFromInput(input, lang) {
   return fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${input}&key=${openCageKey}&limit=1`
+    `https://api.opencagedata.com/geocode/v1/json?q=${input}&key=${openCageKey}&limit=1&language=${lang}`
   )
     .then(res => res.json())
     .then(data => {
@@ -37,8 +37,8 @@ export const handleCitySubmit = async e => {
   const { temperatureUnits, lang } = store;
   const input = document.querySelector('.input');
   const city = input.value;
-  const { lat, lng, timeZone, cityName } = await getCoordsFromInput(city);
-  const weatherData = await getWeather(`${lat},${lng}`, temperatureUnits);
+  const { lat, lng, timeZone, cityName } = await getCoordsFromInput(city, lang);
+  const weatherData = await getWeather(`${lat},${lng}`, temperatureUnits, lang);
   const selectedLocationDateString = new Date().toLocaleString('en-US', {
     timeZone
   });
@@ -83,7 +83,7 @@ export function switchTempUnits(e) {
 export function changeLang(e) {
   const langBoxChildren = Array.from(e.currentTarget.children);
 
-  langBoxChildren.forEach(lang => {
+  langBoxChildren.forEach(async lang => {
     lang.classList.remove('active');
 
     if (lang.innerText === e.target.innerText) {
@@ -94,6 +94,16 @@ export function changeLang(e) {
 
       showDate(store.dateObj, lang.innerText);
       showThreeDaysWeather(store.weatherData, lang.innerText);
+
+      const cityName = await getCityNameByCoords(store.coords, store.lang);
+      insertDataIntoNode(cityName, '.location-name');
+
+      const { currently } = await getWeather(
+        store.coords,
+        e.target.innerText,
+        store.lang
+      );
+      insertDataIntoNode(currently.summary, '.weather-box__summary');
     }
   });
 }
