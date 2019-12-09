@@ -19,13 +19,13 @@ export default function showThreeDaysWeather(weatherObj, lang) {
   }
 }
 
-function getTemp(dayObj) {
+export function getTemp(dayObj) {
   return Math.trunc(
     (dayObj.apparentTemperatureHigh + dayObj.apparentTemperatureLow) / 2
   );
 }
 
-function getName(dayObj, lang) {
+export function getName(dayObj, lang) {
   const dateObj = new Date(dayObj.time * 1000);
   return translations[lang].WEEKDAYS[dateObj.getDay()];
 }
