@@ -64,19 +64,19 @@ export function handleRefreshClick() {
 
 export function switchTempUnits(e) {
   const { coords, lang } = store;
-  const { innerText } = e.target;
+  const { innerText: selectedUnits } = e.target;
 
   Array.from(e.currentTarget.children).forEach(async child => {
     child.classList.remove('active');
 
-    if (child.innerText === e.target.innerText) {
+    if (child.innerText === selectedUnits) {
       child.classList.add('active');
 
-      const weatherData = await getWeather(coords, innerText, lang);
+      const weatherData = await getWeather(coords, selectedUnits, lang);
 
       store.weatherData = weatherData;
-      store.temperatureUnits = innerText;
-      localStorage.temperatureUnits = innerText;
+      store.temperatureUnits = selectedUnits;
+      localStorage.setItem('temperatureUnits', selectedUnits);
 
       showWeather(weatherData, lang);
       showThreeDaysWeather(weatherData, lang);
