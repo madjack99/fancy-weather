@@ -147,3 +147,37 @@ export function getDataFromLocalStorage() {
     if (langDiv.innerText === savedLang) langDiv.click();
   });
 }
+
+export function buttonAnimation() {
+  this.animate(
+    [{ transform: 'rotate(0deg)' }, { transform: 'rotate(180deg)' }],
+    {
+      duration: 1000
+    }
+  );
+}
+
+export function animateLangButton() {
+  this.animate(
+    [{ borderRadius: '3px' }, { borderRadius: '50%' }, { borderRadius: '3px' }],
+    {
+      duration: 1000,
+      iterations: 3
+    }
+  );
+}
+
+export function animateUnitButton() {
+  this.animate(
+    [
+      { transform: 'scale(1)' },
+      { transform: 'scale(1.3)' },
+      { transform: 'scale(1)' }
+    ],
+    {
+      duration: 1000,
+      iterations: 3,
+      easing: 'ease-out'
+    }
+  );
+}

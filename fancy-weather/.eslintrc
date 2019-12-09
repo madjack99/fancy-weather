@@ -29,6 +29,8 @@
     "object-curly-newline": "off",
     "operator-linebreak": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off"
   }
 }

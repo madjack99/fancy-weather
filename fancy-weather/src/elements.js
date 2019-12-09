@@ -6,6 +6,12 @@ import {
   changeLang
 } from './eventListeners';
 
+import {
+  buttonAnimation,
+  animateLangButton,
+  animateUnitButton
+} from './helper';
+
 const container = document.querySelector('.container');
 
 const infoSection = document.createElement('section');
@@ -20,6 +26,7 @@ toolBar.classList.add('tool-bar');
 const refresh = document.createElement('button');
 refresh.classList.add('refresh');
 refresh.addEventListener('click', handleRefreshClick);
+refresh.addEventListener('mouseover', buttonAnimation);
 
 const tempUnits = document.createElement('div');
 tempUnits.classList.add('temp-units');
@@ -32,6 +39,10 @@ fahrenheit.innerText = 'F';
 const celsius = document.createElement('button');
 celsius.classList.add('temp-units__celsius', 'temp-units__unit', 'active');
 celsius.innerText = 'C';
+
+[fahrenheit, celsius].forEach(item =>
+  item.addEventListener('mouseover', animateUnitButton)
+);
 
 const langBox = document.createElement('div');
 langBox.classList.add('lang-box');
@@ -48,6 +59,10 @@ be.innerText = 'be';
 const en = document.createElement('button');
 en.classList.add('lang-box__en', 'lang-box__lang', 'active');
 en.innerText = 'en';
+
+[ru, be, en].forEach(item =>
+  item.addEventListener('mouseover', animateLangButton)
+);
 
 const input = document.createElement('input');
 input.classList.add('input');
