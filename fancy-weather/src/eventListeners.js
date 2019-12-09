@@ -86,30 +86,31 @@ export function switchTempUnits(e) {
 
 export function changeLang(e) {
   const langBoxChildren = Array.from(e.currentTarget.children);
+  const { innerText: selectedLang } = e.target;
+  const { dateObj, coords, temperatureUnits } = store;
 
-  langBoxChildren.forEach(async lang => {
-    lang.classList.remove('active');
+  langBoxChildren.forEach(async langButton => {
+    langButton.classList.remove('active');
 
-    if (lang.innerText === e.target.innerText) {
-      lang.classList.add('active');
+    if (langButton.innerText === selectedLang) {
+      langButton.classList.add('active');
 
-      localStorage.setItem('lang', lang.innerText);
-      store.lang = lang.innerText;
+      localStorage.setItem('lang', selectedLang);
+      store.lang = selectedLang;
 
-      showDate(store.dateObj, lang.innerText);
-      showThreeDaysWeather(store.weatherData, lang.innerText);
-
-      const cityName = await getCityNameByCoords(store.coords, store.lang);
+      const cityName = await getCityNameByCoords(coords, selectedLang);
       insertDataIntoNode(cityName, '.location-name');
 
       const weatherData = await getWeather(
-        store.coords,
-        store.temperatureUnits,
-        store.lang
+        coords,
+        temperatureUnits,
+        selectedLang
       );
 
-      showWeather(weatherData, store.lang);
-      showCoords(...store.coords.split(','), store.lang);
+      showDate(dateObj, selectedLang);
+      showWeather(weatherData, selectedLang);
+      showThreeDaysWeather(weatherData, selectedLang);
+      showCoords(...coords.split(','), selectedLang);
     }
   });
 }
