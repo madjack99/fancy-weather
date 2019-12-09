@@ -32,7 +32,6 @@ function getCoordsFromInput(input, lang) {
 }
 
 export const handleCitySubmit = async e => {
-  console.log('handling submit');
   e.preventDefault();
 
   const { temperatureUnits, lang } = store;
@@ -64,20 +63,23 @@ export function handleRefreshClick() {
 }
 
 export function switchTempUnits(e) {
+  const { coords, lang } = store;
+  const { innerText } = e.target;
+
   Array.from(e.currentTarget.children).forEach(async child => {
     child.classList.remove('active');
 
     if (child.innerText === e.target.innerText) {
       child.classList.add('active');
 
-      const weatherData = await getWeather(store.coords, e.target.innerText);
+      const weatherData = await getWeather(coords, innerText, lang);
 
       store.weatherData = weatherData;
-      store.temperatureUnits = e.target.innerText;
-      localStorage.temperatureUnits = e.target.innerText;
+      store.temperatureUnits = innerText;
+      localStorage.temperatureUnits = innerText;
 
-      showWeather(weatherData, store.lang);
-      showThreeDaysWeather(weatherData, store.lang);
+      showWeather(weatherData, lang);
+      showThreeDaysWeather(weatherData, lang);
     }
   });
 }
