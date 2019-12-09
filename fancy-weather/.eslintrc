@@ -27,6 +27,7 @@
     "no-unused-expressions": ["off", { "allowTernary": true }],
     "no-use-before-define": ["error", { "functions": false }],
     "object-curly-newline": "off",
-    "operator-linebreak": ["error", "before"]
+    "operator-linebreak": ["error", "before"],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
 }

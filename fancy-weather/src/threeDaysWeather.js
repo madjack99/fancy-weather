@@ -2,33 +2,21 @@ import translations from './translations';
 import { insertDataIntoNode, insertIcon } from './helper';
 
 export default function showThreeDaysWeather(weatherObj, lang) {
-  const dayOneObj = weatherObj.daily.data[1];
-  const dayTwoObj = weatherObj.daily.data[2];
-  const dayThreeObj = weatherObj.daily.data[3];
+  for (let i = 1; i <= 3; i++) {
+    const dayObj = weatherObj.daily.data[i];
+    const dayName = getName(dayObj, lang);
+    const dayTemp = getTemp(dayObj);
+    const dayIcon = dayObj.icon;
 
-  const dayOneName = getName(dayOneObj, lang);
-  const dayTwoName = getName(dayTwoObj, lang);
-  const dayThreeName = getName(dayThreeObj, lang);
+    let dayNumber;
+    if (i === 1) dayNumber = 'one';
+    if (i === 2) dayNumber = 'two';
+    if (i === 3) dayNumber = 'three';
 
-  const dayOneTemp = getTemp(dayOneObj);
-  const dayTwoTemp = getTemp(dayTwoObj);
-  const dayThreeTemp = getTemp(dayThreeObj);
-
-  const dayOneIcon = dayOneObj.icon;
-  const dayTwoIcon = dayTwoObj.icon;
-  const dayThreeIcon = dayThreeObj.icon;
-
-  insertDataIntoNode(dayOneName, '.day-one__name');
-  insertDataIntoNode(dayOneTemp, '.day-one__temperature');
-  insertIcon(dayOneIcon, '.day-one__icon');
-
-  insertDataIntoNode(dayTwoName, '.day-two__name');
-  insertDataIntoNode(dayTwoTemp, '.day-two__temperature');
-  insertIcon(dayTwoIcon, '.day-two__icon');
-
-  insertDataIntoNode(dayThreeName, '.day-three__name');
-  insertDataIntoNode(dayThreeTemp, '.day-three__temperature');
-  insertIcon(dayThreeIcon, '.day-three__icon');
+    insertDataIntoNode(dayName, `.day-${dayNumber}__name`);
+    insertDataIntoNode(dayTemp, `.day-${dayNumber}__temperature`);
+    insertIcon(dayIcon, `.day-${dayNumber}__icon`);
+  }
 }
 
 function getTemp(dayObj) {

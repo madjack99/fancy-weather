@@ -1,4 +1,4 @@
-const grammar = '#JSGF V1.0; public <color>;';
+const grammar = '#JSGF V1.0; public <city>;';
 
 // eslint-disable-next-line
 const recognition = new webkitSpeechRecognition();
