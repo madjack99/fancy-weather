@@ -143,7 +143,7 @@ export function getDataFromLocalStorage() {
     document.querySelector('.temp-units__fahrenheit').click();
   }
 
-  Array.from(document.querySelector('.lang-box').children).forEach(lang => {
-    if (lang.innerText === savedLang) lang.click();
+  Array.from(document.querySelector('.lang-box').children).forEach(langDiv => {
+    if (langDiv.innerText === savedLang) langDiv.click();
   });
 }
