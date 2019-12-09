@@ -1,8 +1,3 @@
-// const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-// const SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
-// const SpeechRecognitionEvent =
-//   SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
-
 const grammar = '#JSGF V1.0; public <color>;';
 
 // eslint-disable-next-line
@@ -28,4 +23,8 @@ recognition.onresult = e => {
 
   input.value = city;
   submit.click();
+};
+
+recognition.onspeechend = () => {
+  recognition.stop();
 };
