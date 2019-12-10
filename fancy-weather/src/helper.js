@@ -162,7 +162,7 @@ export function animateLangButton() {
     [{ borderRadius: '3px' }, { borderRadius: '50%' }, { borderRadius: '3px' }],
     {
       duration: 1000,
-      iterations: 3
+      iterations: 1
     }
   );
 }
@@ -176,8 +176,13 @@ export function animateUnitButton() {
     ],
     {
       duration: 1000,
-      iterations: 3,
+      iterations: 1,
       easing: 'ease-out'
     }
   );
+}
+
+export function spinner() {
+  const overlay = document.querySelector('.overlay');
+  overlay.style.display = 'none';
 }

@@ -1,4 +1,5 @@
 import handleRecognition from './speechRecognition';
+import eclipseSpinner from '../static/images/eclipse-spinner.gif';
 import {
   handleCitySubmit,
   handleRefreshClick,
@@ -13,6 +14,13 @@ import {
 } from './helper';
 
 const container = document.querySelector('.container');
+
+const overlay = document.createElement('div');
+overlay.classList.add('overlay');
+
+const spinner = document.createElement('img');
+spinner.classList.add('spinner');
+spinner.src = eclipseSpinner;
 
 const infoSection = document.createElement('section');
 infoSection.classList.add('info');
@@ -179,7 +187,9 @@ const centeredTemperature = document.createElement('div');
 centeredTemperature.classList.add('weather-box__temperature_centered');
 
 export default function buildHTMLContent() {
-  container.append(header, main);
+  container.append(header, main, overlay);
+
+  overlay.append(spinner);
 
   header.append(toolBar, form);
 

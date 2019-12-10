@@ -12,7 +12,8 @@ import {
   getCityNameByCoords,
   insertDataIntoNode,
   showCoords,
-  getDataFromLocalStorage
+  getDataFromLocalStorage,
+  spinner
 } from './helper';
 
 import './styles/main.scss';
@@ -43,6 +44,7 @@ async function initWithDefaultValues() {
   getPhotosFromFlickr(dateObj, weatherData);
 
   getDataFromLocalStorage();
+  spinner();
 }
 
 buildHTMLContent();
